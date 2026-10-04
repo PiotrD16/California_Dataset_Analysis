@@ -27,9 +27,24 @@ def longitude_latitude_scatter_plot(dataframe: pd.DataFrame):
     plt.ylabel("Latitude")
     plt.show()
 
+def median_house_value_vs_median_income(df: pd.DataFrame):
+    # Creates a scatter plot for median_house_value vs median_income
+    plt.figure(figsize=(10, 7))
+    plt.scatter(
+        df['median_income'],
+        df['median_house_value'],
+        alpha=0.5,
+        linewidth=0.5
+        )
+    plt.title("Median House Value vs Median Income")
+    plt.xlabel("Median Income")
+    plt.ylabel("Median House Value")
+    plt.show()
+
 if __name__ == "__main__":
     file_path = Path("D:/California_housing_training/housing.csv")
     dataframe = pd.read_csv(file_path, sep=',')
     create_scatter_matrix(dataframe)
     longitude_latitude_scatter_plot(dataframe)
+    median_house_value_vs_median_income(dataframe)
     input("Press Enter to exit...")
