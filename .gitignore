@@ -1,0 +1,97 @@
+# ==========================================
+# Pliki specyficzne dla Machine Learning / Data Science
+# ==========================================
+
+# Dane (Data)
+# Zawsze ignoruj surowe i przetworzone zbiory danych ze względu na ich rozmiar i prywatność
+*.csv
+*.tsv
+*.json
+*.xml
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.npz
+*.npy
+data/
+datasets/
+inputs/
+outputs/
+
+# Modele i wagi (Models & Weights)
+# Zapisane stany modeli, checkpointy i pliki binarne
+*.pkl
+*.pickle
+*.joblib
+*.npy
+*.npz
+*.h5
+*.hd5
+*.keras
+*.pt
+*.pth
+*.onnx
+*.pb
+*.tflite
+*.ckpt
+models/
+checkpoints/
+weights/
+
+# TensorBoard i logi z trenowania
+logs/
+tensorboard/
+*.log
+runs/
+
+# Pliki środowisk uruchomieniowych (mlflow, wandb, clearml itp.)
+.mlflow/
+mlruns/
+wandb/
+.clearml/
+
+# ==========================================
+# Środowisko Python i zależności
+# ==========================================
+
+# Wirtualne środowiska (Virtual Environments)
+.venv/
+venv/
+ENV/
+env/
+.env/
+bin/
+lib/
+share/
+pyvenv.cfg
+
+# Pliki Pythona i cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Pliki konfiguracyjne ze zmiennymi środowiskowymi (hasła, klucze API)
+.env
+.env.local
+.secret
+secrets.json
+
+# ==========================================
+# Narzędzia i IDE (Opcjonalne)
+# ==========================================
+
+# Jupyter Notebooks - eksport do HTML/PDF (opcjonalnie)
+*.html
+*.pdf
+
+# VS Code i PyCharm
+.vscode/
+.idea/
+
+# Systemowe pliki operacyjne
+.DS_Store
+Thumbs.db
