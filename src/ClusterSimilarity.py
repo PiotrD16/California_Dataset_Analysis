@@ -7,20 +7,21 @@ from sklearn.metrics.pairwise import rbf_kernel
 # TransformerMixin: na podstawie fit() i transform() sam tworzy metode fit_transform()
 
 class ClusterSimilarity(BaseEstimator, TransformerMixin):
-    def __init__(self, n_clusters = 10, gamma = 0.1, random_state = None):
+    def __init__(self, n_clusters = 10, gamma = 1.0, random_state = None):
         self.n_clusters = n_clusters
         self.gamma = gamma
         self.random_state = random_state
 
     # FIT: obserwuje dane i zapisuje n_clusters skupisk:
-    def fit(self, X, y=None):
+    def fit(self, X, y=None, sample_weight=None):
         self.kmeans_ = KMeans(n_clusters=self.n_clusters, random_state=self.random_state)
-        self.kmeans_.fit(X, y, sample_weight=self.sample_weight)
+        self.kmeans_.fit(X, y, sample_weight=sample_weight)
+        return self
 
     # TRANSFORM: bierze dane i robi już coś z nimi (tutaj używa jądra RBF do obliczania odleglosci od tych punktow skupisk)
-    def transform(self, X, y=None):
-        return rbf_kernel(X, y, gamma=self.gamma)
+    def transform(self, X):
+        return rbf_kernel(X, self.kmeans_.cluster_centers_, gamma=self.gamma)
 
     # Pobieram nazwy skupisk
-    def get_features_names_out(self, names=None):
-        return [f"Prawdopodobienstwo {i} skupienia" for i in range (self.kmeans_.cluster_centers_)]
+    def get_feature_names_out(self, names=None):
+        return [f"Prawdopodobienstwo {i} skupienia" for i in range (len(self.kmeans_.cluster_centers_))]
